@@ -1,4 +1,4 @@
-<h1>More of a Smart Display..</h1>
+<h1>More of a Smart Screen..</h1>
 
 This is my take on the amazing software of:
 
