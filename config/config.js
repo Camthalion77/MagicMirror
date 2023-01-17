@@ -52,7 +52,7 @@ var config = {
 				location: "Ιεράπετρα",
 				locationID: "261814",
 				appendLocationNameToHeader: false,
-				appid: "72e0593f5641e620b4b8da4acd9bc074",
+				appid: "YOUR TOKEN ID",
 				showFeelsLike: true,
 				showHumidity: true,
 				lang: "el",
@@ -68,23 +68,17 @@ var config = {
  				 appendLocationNameToHeader: false,
 			   location: "Ιεράπετρα",
 			   locationID: "261814",
-			   appid: "72e0593f5641e620b4b8da4acd9bc074",
+			   appid: "YOUR TOKEN ID",
 			   units: "metric",
 			   maxNumberOfDays: 7,
 			   updateInterval: 300000,
 		}
-	    },
+	   },
 			{
 				module: "newsfeed",
 				position: "lower_third",
 				config: {
 					feeds: [
-/*						{
-										title: "News.gr Ροή Ειδήσεων",
-										url: "https://www.news.gr/rss.ashx",
-										encoding: "UTF-8" //ISO-8859-1
-						},
-*/
 						{
 										title: "News.gr Σημαντικές Eιδήσεις",
 										url: "http://www.news.gr/rss.ashx?colid=2",
@@ -323,9 +317,6 @@ var config = {
 				alpha: 0.5
 						}
 					},
-    {
-                        module: 'MMM-Remote-Control'
-                },
 
 ]
 };
