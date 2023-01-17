@@ -1,3 +1,7 @@
+<h1>More of a Smart Display..</h1>
+
+<h2>This is my take on amazing software of: </h2>
+
 ![MagicMirror²: The open source modular smart mirror platform. ](.github/header.png)
 
 <p style="text-align: center">
@@ -18,7 +22,16 @@
 
 MagicMirror² focuses on a modular plugin system and uses [Electron](https://www.electronjs.org/) as an application wrapper. So no more web server or browser installs necessary!
 
+<center><h2>Instead of a smart mirror, a smart screen!</h2></center>
+
+![Screen](https://user-images.githubusercontent.com/2944375/212940700-7b6c7662-75e6-4cb2-a756-d10f237919e6.jpg)
+
 ## Documentation
+
+For installation follow the same instructions as for MagicMirror2
+
+
+
 
 For the full documentation including **[installation instructions](https://docs.magicmirror.builders/getting-started/installation.html)**, please visit our dedicated documentation website: [https://docs.magicmirror.builders](https://docs.magicmirror.builders).
 
