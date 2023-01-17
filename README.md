@@ -36,27 +36,27 @@ sudo apt install -y nodejs
 
 Clone this repository:
 ````
-git clone https://github.com/Camthalion77/MagicMirror.git
+git clone https://github.com/Camthalion77/SmartScreen.git
 ````
 
 Install the dependencies:
 ````
-cd MagicMirror
+cd SmartScreen
 npm run install-mm
 ````
 ## If you want to achieve the same result as the image above, you will also need the following modules: 
 
-![MagicMirror](https://user-images.githubusercontent.com/2944375/212946403-818c6319-b1df-4aee-94c9-14b468c9e48d.jpg)
+![SmartScreen](https://user-images.githubusercontent.com/2944375/212946403-818c6319-b1df-4aee-94c9-14b468c9e48d.jpg)
 
 ## Module: MMM-Worldclock
 ````
-cd ~/MagicMirror/modules/
+cd ~/SmartScreen/modules/
 git clone https://github.com/Camthalion77/MMM-Worldclock.git
 ````
 
 ## Module: MMM-MoonPhase
 ````
-cd ~/MagicMirror/modules/
+cd ~/SmartScreen/modules/
 git clone https://github.com/Camthalion77/MMM-MoonPhase.git
 cd MMM-MoonPhase
 npm install
@@ -64,7 +64,7 @@ npm install
 
 ## Module: 
 ````
-cd ~/MagicMirror/modules/
+cd ~/SmartScreen/modules/
 git clone https://github.com/Camthalion77/MMM-Wallpaper.git
 cd MMM-Wallpaper
 npm install
@@ -73,7 +73,7 @@ npm install
 
 ## And finally:
 ````
-cd ~/MagicMirror
+cd ~/SmartScreen
 npm run start
 ````
 
