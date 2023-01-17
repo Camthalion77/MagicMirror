@@ -1,6 +1,6 @@
 <h1>More of a Smart Display..</h1>
 
-This is my take on amazing software of:
+This is my take on the amazing software of:
 
 ![MagicMirror²: The open source modular smart mirror platform. ](.github/header.png)
 
