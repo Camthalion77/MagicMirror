@@ -57,7 +57,7 @@ git clone https://github.com/Camthalion77/MMM-Worldclock.git
 ## Module: MMM-MoonPhase
 ````
 cd ~/MagicMirror/modules/
-https://github.com/Camthalion77/MMM-MoonPhase.git
+git clone https://github.com/Camthalion77/MMM-MoonPhase.git
 cd MMM-MoonPhase
 npm install
 ````
@@ -65,7 +65,7 @@ npm install
 ## Module: 
 ````
 cd ~/MagicMirror/modules/
-https://github.com/Camthalion77/MMM-Wallpaper.git
+git clone https://github.com/Camthalion77/MMM-Wallpaper.git
 cd MMM-Wallpaper
 npm install
 ````
