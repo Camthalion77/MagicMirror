@@ -1,6 +1,6 @@
 <h1>More of a Smart Display..</h1>
 
-<h2>This is my take on amazing software of: </h2>
+This is my take on amazing software of:
 
 ![MagicMirror²: The open source modular smart mirror platform. ](.github/header.png)
 
@@ -80,7 +80,7 @@ npm run start
 ## Enjoy!..
 
 
-For the full documentation including **[installation instructions](https://docs.magicmirror.builders/getting-started/installation.html)**, please visit our dedicated documentation website: [https://docs.magicmirror.builders](https://docs.magicmirror.builders).
+For the full documentation including **[installation instructions](https://docs.magicmirror.builders/getting-started/installation.html)**, please visit the original documentation website: [https://docs.magicmirror.builders](https://docs.magicmirror.builders).
 
 ## Links
 
