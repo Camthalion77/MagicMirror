@@ -1,4 +1,4 @@
-/* MagicMirror²
+/* Magic Mirror
  * Module: NewsFeed
  *
  * By Michael Teeuw https://michaelteeuw.nl
@@ -14,16 +14,14 @@ Module.register("newsfeed", {
 				encoding: "UTF-8" //ISO-8859-1
 			}
 		],
-		showAsList: false,
-		showSourceTitle: true,
-		showPublishDate: true,
-		broadcastNewsFeeds: true,
-		broadcastNewsUpdates: true,
+		showSourceTitle: false,
+		showPublishDate: false,
+		broadcastNewsFeeds: false,
+		broadcastNewsUpdates: false,
 		showDescription: false,
-		showTitleAsUrl: false,
-		wrapTitle: true,
-		wrapDescription: true,
-		truncDescription: true,
+		wrapTitle: false,
+		wrapDescription: false,
+		truncDescription: false,
 		lengthDescription: 400,
 		hideLoading: false,
 		reloadInterval: 5 * 60 * 1000, // every 5 minutes
@@ -38,16 +36,7 @@ Module.register("newsfeed", {
 		endTags: [],
 		prohibitedWords: [],
 		scrollLength: 500,
-		logFeedWarnings: false,
-		dangerouslyDisableAutoEscaping: false
-	},
-
-	getUrlPrefix: function (item) {
-		if (item.useCorsProxy) {
-			return location.protocol + "//" + location.host + "/cors?url=";
-		} else {
-			return "";
-		}
+		logFeedWarnings: false
 	},
 
 	// Define required scripts.
@@ -100,8 +89,8 @@ Module.register("newsfeed", {
 
 			this.loaded = true;
 			this.error = null;
-		} else if (notification === "NEWSFEED_ERROR") {
-			this.error = this.translate(payload.error_type);
+		} else if (notification === "INCORRECT_URL") {
+			this.error = `Incorrect url: ${payload.url}`;
 			this.scheduleUpdateInterval();
 		}
 	},
@@ -131,7 +120,7 @@ Module.register("newsfeed", {
 		}
 		if (this.newsItems.length === 0) {
 			return {
-				empty: true
+				loaded: false
 			};
 		}
 		if (this.activeItem >= this.newsItems.length) {
@@ -139,10 +128,6 @@ Module.register("newsfeed", {
 		}
 
 		const item = this.newsItems[this.activeItem];
-		const items = this.newsItems.map(function (item) {
-			item.publishDate = moment(new Date(item.pubdate)).fromNow();
-			return item;
-		});
 
 		return {
 			loaded: true,
@@ -150,19 +135,12 @@ Module.register("newsfeed", {
 			sourceTitle: item.sourceTitle,
 			publishDate: moment(new Date(item.pubdate)).fromNow(),
 			title: item.title,
-			url: this.getUrlPrefix(item) + item.url,
-			description: item.description,
-			items: items
+			description: item.description
 		};
 	},
 
 	getActiveItemURL: function () {
-		const item = this.newsItems[this.activeItem];
-		if (item) {
-			return typeof item.url === "string" ? this.getUrlPrefix(item) + item.url : this.getUrlPrefix(item) + item.url.href;
-		} else {
-			return "";
-		}
+		return typeof this.newsItems[this.activeItem].url === "string" ? this.newsItems[this.activeItem].url : this.newsItems[this.activeItem].url.href;
 	},
 
 	/**
@@ -200,21 +178,21 @@ Module.register("newsfeed", {
 			const dateB = new Date(b.pubdate);
 			return dateB - dateA;
 		});
-
 		if (this.config.maxNewsItems > 0) {
 			newsItems = newsItems.slice(0, this.config.maxNewsItems);
 		}
 
 		if (this.config.prohibitedWords.length > 0) {
-			newsItems = newsItems.filter(function (item) {
+			newsItems = newsItems.filter(function (value) {
 				for (let word of this.config.prohibitedWords) {
-					if (item.title.toLowerCase().indexOf(word.toLowerCase()) > -1) {
+					if (value["title"].toLowerCase().indexOf(word.toLowerCase()) > -1) {
 						return false;
 					}
 				}
 				return true;
 			}, this);
 		}
+
 		newsItems.forEach((item) => {
 			//Remove selected tags from the beginning of rss feed items (title or description)
 			if (this.config.removeStartTags === "title" || this.config.removeStartTags === "both") {
@@ -236,6 +214,7 @@ Module.register("newsfeed", {
 			}
 
 			//Remove selected tags from the end of rss feed items (title or description)
+
 			if (this.config.removeEndTags) {
 				for (let endTag of this.config.endTags) {
 					if (item.title.slice(-endTag.length) === endTag) {
@@ -310,9 +289,6 @@ Module.register("newsfeed", {
 		if (this.config.broadcastNewsFeeds) {
 			this.sendNotification("NEWS_FEED", { items: this.newsItems });
 		}
-
-		// #2638 Clear timer if it already exists
-		if (this.timer) clearInterval(this.timer);
 
 		this.timer = setInterval(() => {
 			this.activeItem++;

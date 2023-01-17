@@ -1,0 +1,20 @@
+.weatherforecast .day {
+
+  font-size: 22px;
+}
+
+.weatherforecast .weather-icon {
+  font-size: 22px;
+}
+
+.weatherforecast .max-temp {
+  font-size: 22px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 4px;
+}
+
+table, th, td {
+   text-align: center;
+   filter: brightness(90%);
+}

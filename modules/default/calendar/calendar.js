@@ -9,16 +9,16 @@
 Module.register("calendar", {
 	// Define module defaults
 	defaults: {
-		maximumEntries: 10, // Total Maximum Entries
+		maximumEntries: 3, // Total Maximum Entries
 		maximumNumberOfDays: 365,
 		limitDays: 0, // Limit the number of days shown, 0 = no limit
-		displaySymbol: true,
+		displaySymbol: false,
 		defaultSymbol: "calendar-alt", // Fontawesome Symbol see https://fontawesome.com/cheatsheet?from=io
 		defaultSymbolClassName: "fas fa-fw fa-",
 		showLocation: false,
 		displayRepeatingCountTitle: false,
 		defaultRepeatingCountTitle: "",
-		maxTitleLength: 25,
+		maxTitleLength: 50,
 		maxLocationTitleLength: 25,
 		wrapEvents: false, // wrap events to multiple lines breaking at maxTitleLength
 		wrapLocationEvents: false,
@@ -29,9 +29,9 @@ Module.register("calendar", {
 		fade: true,
 		urgency: 7,
 		timeFormat: "relative",
-		dateFormat: "MMM Do",
+		dateFormat: "D, MMM",
 		dateEndFormat: "LT",
-		fullDayEventDateFormat: "MMM Do",
+		fullDayEventDateFormat: "D, MMM",
 		showEnd: false,
 		getRelative: 6,
 		fadePoint: 0.25, // Start on 1/4th of the list.
@@ -46,7 +46,7 @@ Module.register("calendar", {
 		calendars: [
 			{
 				symbol: "calendar-alt",
-				url: "https://www.calendarlabs.com/templates/ical/US-Holidays.ics"
+				url: "https://calendar.google.com/calendar/ical/el.greek%23holiday%40group.v.calendar.google.com/public/basic.ics"
 			}
 		],
 		titleReplace: {

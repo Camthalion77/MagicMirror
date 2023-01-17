@@ -92,18 +92,20 @@ class GitHelper {
 		// examples for status:
 		// ## develop...origin/develop
 		// ## master...origin/master [behind 8]
-		// ## master...origin/master [ahead 8, behind 1]
-		status = status.match(/## (.*)\.\.\.([^ ]*)(?: .*behind (\d+))?/);
+		status = status.match(/(?![.#])([^.]*)/g);
 		// examples for status:
-		// [ '## develop...origin/develop', 'develop', 'origin/develop' ]
-		// [ '## master...origin/master [behind 8]', 'master', 'origin/master', '8' ]
-		// [ '## master...origin/master [ahead 8, behind 1]', 'master', 'origin/master', '1' ]
-		gitInfo.current = status[1];
-		gitInfo.tracking = status[2];
+		// [ ' develop', 'origin/develop', '' ]
+		// [ ' master', 'origin/master [behind 8]', '' ]
+		gitInfo.current = status[0].trim();
+		status = status[1].split(" ");
+		// examples for status:
+		// [ 'origin/develop' ]
+		// [ 'origin/master', '[behind', '8]' ]
+		gitInfo.tracking = status[0].trim();
 
-		if (status[3]) {
+		if (status[2]) {
 			// git fetch was already called before so `git status -sb` delivers already the behind number
-			gitInfo.behind = parseInt(status[3]);
+			gitInfo.behind = parseInt(status[2].substring(0, status[2].length - 1));
 			gitInfo.isBehindInStatus = true;
 		}
 

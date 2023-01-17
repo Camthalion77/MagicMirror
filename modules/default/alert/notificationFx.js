@@ -1,27 +1,34 @@
 /**
- * Based on work by
- *
  * notificationFx.js v1.0.0
- * https://tympanus.net/codrops/
+ * http://www.codrops.com
  *
  * Licensed under the MIT license.
- * https://opensource.org/licenses/mit-license.php
+ * http://www.opensource.org/licenses/mit-license.php
  *
  * Copyright 2014, Codrops
- * https://tympanus.net/codrops/
- *
- * @param {object} window The window object
+ * http://www.codrops.com
  */
-(function (window) {
+// jscs:disable
+;(function(window) {
+
+	"use strict";
+
+	var docElem = window.document.documentElement,
+		support = {animations: Modernizr.cssanimations},
+		animEndEventNames = {
+			"WebkitAnimation": "webkitAnimationEnd",
+			"OAnimation": "oAnimationEnd",
+			"msAnimation": "MSAnimationEnd",
+			"animation": "animationend"
+		},
+		// animation end event name
+		animEndEventName = animEndEventNames[ Modernizr.prefixed("animation") ];
+
 	/**
-	 * Extend one object with another one
-	 *
-	 * @param {object} a The object to extend
-	 * @param {object} b The object which extends the other, overwrites existing keys
-	 * @returns {object} The merged object
+	 * extend obj function
 	 */
 	function extend(a, b) {
-		for (let key in b) {
+		for (var key in b) {
 			if (b.hasOwnProperty(key)) {
 				a[key] = b[key];
 			}
@@ -30,10 +37,7 @@
 	}
 
 	/**
-	 * NotificationFx constructor
-	 *
-	 * @param {object} options The configuration options
-	 * @class
+	 * NotificationFx function
 	 */
 	function NotificationFx(options) {
 		this.options = extend({}, this.options);
@@ -66,22 +70,19 @@
 		ttl: 6000,
 		al_no: "ns-box",
 		// callbacks
-		onClose: function () {
-			return false;
-		},
-		onOpen: function () {
-			return false;
-		}
+		onClose: function() { return false; },
+		onOpen: function() { return false; }
 	};
 
 	/**
-	 * Initialize and cache some vars
+	 * init function
+	 * initialize and cache some vars
 	 */
-	NotificationFx.prototype._init = function () {
+	NotificationFx.prototype._init = function() {
 		// create HTML structure
 		this.ntf = document.createElement("div");
-		this.ntf.className = this.options.al_no + " ns-" + this.options.layout + " ns-effect-" + this.options.effect + " ns-type-" + this.options.type;
-		let strinner = '<div class="ns-box-inner">';
+		this.ntf.className = this.options.al_no +  " ns-" + this.options.layout + " ns-effect-" + this.options.effect + " ns-type-" + this.options.type;
+		var strinner = "<div class=\"ns-box-inner\">";
 		strinner += this.options.message;
 		strinner += "</div>";
 		this.ntf.innerHTML = strinner;
@@ -90,12 +91,13 @@
 		this.options.wrapper.insertBefore(this.ntf, this.options.wrapper.nextSibling);
 
 		// dismiss after [options.ttl]ms
+		var self = this;
 		if (this.options.ttl) {
-			this.dismissttl = setTimeout(() => {
-				if (this.active) {
-					this.dismiss();
-				}
-			}, this.options.ttl);
+			this.dismissttl = setTimeout(function() {
+			if (self.active) {
+				self.dismiss();
+			}
+		}, this.options.ttl);
 		}
 
 		// init events
@@ -103,58 +105,61 @@
 	};
 
 	/**
-	 * Init events
+	 * init events
 	 */
-	NotificationFx.prototype._initEvents = function () {
+	NotificationFx.prototype._initEvents = function() {
+		var self = this;
 		// dismiss notification by tapping on it if someone has a touchscreen
-		this.ntf.querySelector(".ns-box-inner").addEventListener("click", () => {
-			this.dismiss();
-		});
+		this.ntf.querySelector(".ns-box-inner").addEventListener("click", function() { self.dismiss(); });
 	};
 
 	/**
-	 * Show the notification
+	 * show the notification
 	 */
-	NotificationFx.prototype.show = function () {
+	NotificationFx.prototype.show = function() {
 		this.active = true;
-		this.ntf.classList.remove("ns-hide");
-		this.ntf.classList.add("ns-show");
+		classie.remove(this.ntf, "ns-hide");
+		classie.add(this.ntf, "ns-show");
 		this.options.onOpen();
 	};
 
 	/**
-	 * Dismiss the notification
-	 *
-	 * @param {boolean} [close] call the onClose callback at the end
+	 * dismiss the notification
 	 */
-	NotificationFx.prototype.dismiss = function (close = true) {
+	NotificationFx.prototype.dismiss = function() {
+		var self = this;
 		this.active = false;
 		clearTimeout(this.dismissttl);
-		this.ntf.classList.remove("ns-show");
-		setTimeout(() => {
-			this.ntf.classList.add("ns-hide");
+		classie.remove(this.ntf, "ns-show");
+		setTimeout(function() {
+			classie.add(self.ntf, "ns-hide");
 
 			// callback
-			if (close) this.options.onClose();
+			self.options.onClose();
 		}, 25);
 
 		// after animation ends remove ntf from the DOM
-		const onEndAnimationFn = (ev) => {
-			if (ev.target !== this.ntf) {
-				return false;
+		var onEndAnimationFn = function(ev) {
+			if (support.animations) {
+				if (ev.target !== self.ntf) return false;
+				this.removeEventListener(animEndEventName, onEndAnimationFn);
 			}
-			this.ntf.removeEventListener("animationend", onEndAnimationFn);
 
-			if (ev.target.parentNode === this.options.wrapper) {
-				this.options.wrapper.removeChild(this.ntf);
+			if (this.parentNode === self.options.wrapper) {
+				self.options.wrapper.removeChild(this);
 			}
 		};
 
-		this.ntf.addEventListener("animationend", onEndAnimationFn);
+		if (support.animations) {
+			this.ntf.addEventListener(animEndEventName, onEndAnimationFn);
+		} else {
+			onEndAnimationFn();
+		}
 	};
 
 	/**
-	 * Add to global namespace
+	 * add to global namespace
 	 */
 	window.NotificationFx = NotificationFx;
+
 })(window);
