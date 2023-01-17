@@ -1,0 +1,175 @@
+/*****************************************************
+ * Magic Mirror                                      *
+ * Custom CSS                                        *
+ *                                                   *
+ * By Michael Teeuw http://michaelteeuw.nl           *
+ * MIT Licensed.                                     *
+ *                                                   *
+ * Add any custom CSS below.                         *
+ * Changes to this files will be ignored by GIT. *
+ *****************************************************/
+@font-face {
+  font-family: "Google Sans Regular";
+  font-style: normal;
+  font-weight: 10;
+  src: url("/fonts/Roboto-Thin.ttf")  format("truetype");
+}
+@font-face {
+  font-family: "Artemisia Bold Italic";
+  font-style: normal;
+  font-weight: 10;
+  src: url("/fonts/Aegean.ttf")  format("truetype");
+}
+.newsfeed {
+  font-style: italic;
+}
+.currentweather .weathericon {
+  position: absolute;
+  z-index: 0;
+  height: 120px;
+  left: 30px;
+  margin-top: -40px;
+}
+
+.weatherforecast .weathericon {
+  position: relative;
+  z-index: 0;
+  height: 60px;
+  left: -9px;
+}
+
+.wi-cloudy{
+	content: url("/css/icon/26.png");
+}
+
+.weatherforecast .wi-cloudy{
+	content : url("/css/icon/26.png");
+}
+
+.wi-cloudy-windy{
+	content: url("/css/icon/23.png");
+}
+
+.weatherforecast .wi-cloudy-windy{
+	content : url("/css/icon/23.png");
+}
+
+.wi-showers{
+	content: url("/css/icon/9.png"):
+}
+
+.weatherforecast .wi-showers{
+	content : url("/css/icon/9.png");
+}
+
+.wi-rain{
+	content: url("/css/icon/12.png");
+}
+
+.weatherforecast .wi-rain{
+	content : url("/css/icon/12.png");
+}
+
+.wi-thunderstorm{
+	content: url("/css/icon/3.png");
+}
+
+.weatherforecast .wi-thunderstorm{
+	content : url("/css/icon/3.png");
+}
+
+.wi-snow{
+	content: url("/css/icon/14.png");
+}
+
+.weatherforecast .wi-snow{
+	content : url("/css/icon/14.png");
+}
+
+.wi-fog{
+	content: url("/css/icon/22.png");
+}
+
+.weatherforecast .wi-fog{
+	content : url("/css/icon/22.png");
+}
+
+.wi-night-clear{
+	content: url("/css/icon/31.png");
+}
+
+.weatherforecast .wi-night-clear{
+	content : url("/css/icon/31.png");
+}
+
+.wi-night-showers{
+	content: url("/css/icon/45.png");
+}
+
+.weatherforecast .wi-night-showers{
+	content : url("/css/icon/45.png");
+}
+
+.wi-night-rain{
+	content: url("/css/icon/45.png");
+}
+
+.weatherforecast .wi-night-rain{
+	content : url("/css/icon/45.png");
+}
+
+.wi-night-thunderstorm{
+	content: url("/css/icon/47.png");
+}
+
+.weatherforecast .wi-night-thunderstorm{
+	content : url("/css/icon/47.png");
+}
+
+.wi-night-snow{
+	content: url("/css/icon/46.png");
+}
+
+.weatherforecast .wi-night-snow{
+	content : url("/css/icon/46.png");
+}
+
+.wi-night-alt-cloudy-windy{
+	content: url("/css/icon/24.png");
+}
+
+.weatherforecast .wi-night-alt-cloudy-windy{
+	content : url("/css/icon/24.png");
+}
+
+.wi-day-cloudy{
+	content: url("/css/icon/28.png");
+}
+
+.weatherforecast .wi-day-cloudy{
+	content : url("/css/icon/28.png");
+}
+
+.wi-day-sunny{
+	content: url("/css/icon/36.png");
+}
+
+.weatherforecast .wi-day-sunny{
+	content : url("/css/icon/36.png");
+}
+
+.wi-night-cloudy{
+	content: url("/css/icon/27.png");
+}
+
+.weatherforecast .wi-night-cloudy{
+	content : url("/css/icon/27.png");
+}
+
+.wi-night-rain{
+	content: url("/css/icon/45.png");
+}
+
+.weatherforecast .wi-night-rain{
+	content : url("/css/icon/45.png");
+}
