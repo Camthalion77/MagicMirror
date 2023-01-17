@@ -10,7 +10,7 @@
 
 var config = {
 	address: "0.0.0.0",
-	port: 2020,
+	port: 8080,
 	ipWhitelist: [],
 
 	language: "el",
