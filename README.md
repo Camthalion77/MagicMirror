@@ -28,7 +28,11 @@ MagicMirror² focuses on a modular plugin system and uses [Electron](https://www
 
 ## Documentation
 
-For installation follow the same instructions as for MagicMirror2
+## First Download and install the latest Node.js version
+
+- git clone https://github.com/Camthalion77/MagicMirror.git
+- cd MaginMirror
+- npm run install-mm
 
 
 
