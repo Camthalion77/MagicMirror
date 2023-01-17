@@ -26,15 +26,58 @@ MagicMirror² focuses on a modular plugin system and uses [Electron](https://www
 
 ![Screen](https://user-images.githubusercontent.com/2944375/212940700-7b6c7662-75e6-4cb2-a756-d10f237919e6.jpg)
 
-## Documentation
+## Installation
 
-## First Download and install the latest Node.js version
+Download and install the latest Node.js version:
+````
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt install -y nodejs
+````
 
-- git clone https://github.com/Camthalion77/MagicMirror.git
-- cd MaginMirror
-- npm run install-mm
+Clone this repository:
+````
+git clone https://github.com/Camthalion77/MagicMirror.git
+````
+
+Install the dependencies:
+````
+cd MagicMirror
+npm run install-mm
+````
+## If you want to achieve the same result as the image above, you will also need the following modules: 
+
+![MagicMirror](https://user-images.githubusercontent.com/2944375/212946403-818c6319-b1df-4aee-94c9-14b468c9e48d.jpg)
+
+## Module: MMM-Worldclock
+````
+cd ~/MagicMirror/modules/
+git clone https://github.com/Camthalion77/MMM-Worldclock.git
+````
+
+## Module: MMM-MoonPhase
+````
+cd ~/MagicMirror/modules/
+https://github.com/Camthalion77/MMM-MoonPhase.git
+cd MMM-MoonPhase
+npm install
+````
+
+## Module: 
+````
+cd ~/MagicMirror/modules/
+https://github.com/Camthalion77/MMM-Wallpaper.git
+cd MMM-Wallpaper
+npm install
+````
 
 
+## And finally:
+````
+cd ~/MagicMirror
+npm run start
+````
+
+## Enjoy!..
 
 
 For the full documentation including **[installation instructions](https://docs.magicmirror.builders/getting-started/installation.html)**, please visit our dedicated documentation website: [https://docs.magicmirror.builders](https://docs.magicmirror.builders).
